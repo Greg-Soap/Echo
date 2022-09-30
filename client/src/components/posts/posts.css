@@ -1,3 +1,11 @@
 .Posts {
   flex: 6;
+  margin-left: 25%;
+}
+.post-wrapper {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  width: 100%;
+  flex-wrap: wrap;
 }
