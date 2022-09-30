@@ -15,6 +15,11 @@
   background-color: white;
   border-radius: 5px;
 }
+.form-wrapper h2 {
+  color: #330033;
+  text-align: center;
+  margin-bottom: 1rem;
+}
 .form-control {
   display: block;
   padding: 0.5rem 0.75rem;

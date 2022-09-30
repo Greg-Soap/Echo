@@ -5,6 +5,7 @@ const Form = () => {
   return (
     <div className="Form">
       <div className="form-wrapper">
+        <h2>Leave Your Echo</h2>
         <input
           type="text"
           className="form-control"
@@ -21,6 +22,7 @@ const Form = () => {
           type="text"
           className="form-control"
           name="name"
+          rows={7}
           placeholder="Message"
         />
         <input
