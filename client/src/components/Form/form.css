@@ -1,0 +1,64 @@
+.Form {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin: 4rem 0;
+}
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0 2rem;
+  width: 100%;
+  padding: 1.5rem;
+  background-color: white;
+  border-radius: 5px;
+}
+.form-control {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  margin-bottom: 1rem;
+  background: #f1f5f8;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  text-transform: capitalize;
+  letter-spacing: 1.5px;
+}
+.form-control:focus-within {
+  outline: transparent;
+}
+.submit-btn {
+  text-transform: capitalize;
+  background: #330033;
+  color: white;
+  padding: 0.375rem 0.75rem;
+  letter-spacing: 2px;
+  display: block;
+  font-weight: 500;
+  font-size: 0.875rem;
+  border: none;
+  width: 100%;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  border-radius: 2px;
+  margin-left: auto;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.clear-btn {
+  text-transform: capitalize;
+  background: rgba(255, 0, 0, 0.795);
+  color: white;
+  padding: 0.3rem 0.5rem;
+  letter-spacing: 2px;
+  display: block;
+  width: 100%;
+  font-weight: 400;
+  font-size: 0.875rem;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
