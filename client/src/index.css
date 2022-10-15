@@ -12,4 +12,5 @@ body {
 .Body {
   display: flex;
   margin-top: 50px;
+  overflow-x: auto;
 }

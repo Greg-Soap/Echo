@@ -52,7 +52,8 @@
   color: #330033;
 }
 
-.submit-btn {
+.submit-btn,
+.fileImage input[type="file" i]::-webkit-file-upload-button {
   text-transform: capitalize;
   background: #330033;
   color: white;
@@ -68,6 +69,10 @@
   border-radius: 5px;
   margin-left: auto;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.fileImage input[type="file" i]::-webkit-file-upload-button {
+  color: white;
+  display: inline-block;
 }
 .clear-btn {
   text-transform: capitalize;
