@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useEffect } from "react";
 
-interface IPosts {
+export interface IPosts {
   _id: string;
   title: string;
   selectedFile: string;
   creator: string;
   message: string;
+  tags: string;
 }
 export default function Posts() {
   const [PostD, setPostD] = useState<IPosts[]>([]);
@@ -23,7 +24,7 @@ export default function Posts() {
     fetchingPosts();
   }, []);
   return (
-    <div className="Posts">
+    <section className="Posts">
       <div className="post-wrapper">
         {PostD.map((post: IPosts) => {
           return (
@@ -44,6 +45,6 @@ export default function Posts() {
           );
         })}
       </div>
-    </div>
+    </section>
   );
 }

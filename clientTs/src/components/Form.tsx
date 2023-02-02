@@ -1,28 +1,46 @@
-import React, { FormEvent, useState } from "react";
+import { FormEvent, useState } from "react";
 import FileBase from "react-file-base64";
+import { IPosts } from "./Posts";
 
 export default function Form() {
-  const [postData, setPostData] = useState({
+  const [postData, setPostData] = useState<IPosts>({
     creator: "",
     title: "",
     message: "",
     tags: "",
     selectedFile: "",
+    _id: "",
   });
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    const response = await fetch("http://localhost:4000/posts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify({
+        creator: postData.creator,
+        title: postData.title,
+        message: postData.message,
+        tags: postData.tags,
+        selectedFile: postData.selectedFile,
+      }),
+    });
     setPostData({
       creator: "",
       title: "",
       message: "",
       tags: "",
       selectedFile: "",
+      _id: "",
     });
+    const addedPost = await response.json();
+    setPostData([...postData, addedPost]);
   };
   const clear = () => {};
   return (
-    <div className="Form">
+    <aside className="Form">
       <form className="form-wrapper" onSubmit={handleSubmit}>
         <h2>Leave Your Echo</h2>
         <div className="form-group">
@@ -65,14 +83,14 @@ export default function Form() {
             value={postData.tags}
             onChange={(e) => setPostData({ ...postData, tags: e.target.value })}
           />
-          <label htmlFor="upload" className="form-label">
-            Tags (comma separated)
-          </label>
+          <label className="form-label">Tags (comma separated)</label>
         </div>
 
-        <div className="fileImage" id="upload">
+        <div className="fileImage">
+          <label htmlFor="upload">upload</label>
           <FileBase
             type="file"
+            id="upload"
             multiple={false}
             onDone={({ base64 }: any) =>
               setPostData({ ...postData, selectedFile: base64 })
@@ -84,6 +102,6 @@ export default function Form() {
           Clear
         </button>
       </form>
-    </div>
+    </aside>
   );
 }
