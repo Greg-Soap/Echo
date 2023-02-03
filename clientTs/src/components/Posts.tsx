@@ -8,6 +8,7 @@ export interface IPosts {
   creator: string;
   message: string;
   tags: string;
+  addedPost?: any;
 }
 export default function Posts() {
   const [PostD, setPostD] = useState<IPosts[]>([]);

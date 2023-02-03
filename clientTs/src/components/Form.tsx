@@ -36,7 +36,7 @@ export default function Form() {
       _id: "",
     });
     const addedPost = await response.json();
-    setPostData([...postData, addedPost]);
+    setPostData({ ...postData, addedPost });
   };
   const clear = () => {};
   return (
