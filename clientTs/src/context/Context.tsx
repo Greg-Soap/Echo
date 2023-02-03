@@ -40,6 +40,7 @@ export const AppProvider = ({ children }: any) => {
         selectedFile: postWrite.selectedFile,
       }),
     });
+    const addedPost = await response.json();
     setPostWrite({
       creator: "",
       title: "",
@@ -48,7 +49,6 @@ export const AppProvider = ({ children }: any) => {
       selectedFile: "",
       _id: "",
     });
-    const addedPost = await response.json();
     setPostData([...postData, addedPost]);
   };
   //GET POST
