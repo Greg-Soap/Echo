@@ -1,43 +1,9 @@
-import { FormEvent, useState } from "react";
 import FileBase from "react-file-base64";
-import { IPosts } from "./Posts";
+import { useGlobalContext } from "../context/Context";
 
 export default function Form() {
-  const [postData, setPostData] = useState<IPosts>({
-    creator: "",
-    title: "",
-    message: "",
-    tags: "",
-    selectedFile: "",
-    _id: "",
-  });
+  const { handleSubmit, postWrite, setPostWrite } = useGlobalContext();
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    const response = await fetch("http://localhost:4000/posts", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify({
-        creator: postData.creator,
-        title: postData.title,
-        message: postData.message,
-        tags: postData.tags,
-        selectedFile: postData.selectedFile,
-      }),
-    });
-    setPostData({
-      creator: "",
-      title: "",
-      message: "",
-      tags: "",
-      selectedFile: "",
-      _id: "",
-    });
-    const addedPost = await response.json();
-    setPostData({ ...postData, addedPost });
-  };
   const clear = () => {};
   return (
     <aside className="Form">
@@ -47,9 +13,9 @@ export default function Form() {
           <input
             type="text"
             className="form-control"
-            value={postData.creator}
+            value={postWrite.creator}
             onChange={(e) =>
-              setPostData({ ...postData, creator: e.target.value })
+              setPostWrite({ ...postWrite, creator: e.target.value })
             }
           />
           <label className="form-label">Creator</label>
@@ -58,9 +24,9 @@ export default function Form() {
           <input
             type="text"
             className="form-control"
-            value={postData.title}
+            value={postWrite.title}
             onChange={(e) =>
-              setPostData({ ...postData, title: e.target.value })
+              setPostWrite({ ...postWrite, title: e.target.value })
             }
           />
           <label className="form-label">Title</label>
@@ -68,9 +34,9 @@ export default function Form() {
         <div className="form-group">
           <textarea
             className="form-control"
-            value={postData.message}
+            value={postWrite.message}
             onChange={(e) =>
-              setPostData({ ...postData, message: e.target.value })
+              setPostWrite({ ...postWrite, message: e.target.value })
             }
             rows={7}
           />
@@ -80,8 +46,10 @@ export default function Form() {
           <input
             type="text"
             className="form-control"
-            value={postData.tags}
-            onChange={(e) => setPostData({ ...postData, tags: e.target.value })}
+            value={postWrite.tags}
+            onChange={(e) =>
+              setPostWrite({ ...postWrite, tags: e.target.value })
+            }
           />
           <label className="form-label">Tags (comma separated)</label>
         </div>
@@ -93,7 +61,7 @@ export default function Form() {
             id="upload"
             multiple={false}
             onDone={({ base64 }: any) =>
-              setPostData({ ...postData, selectedFile: base64 })
+              setPostWrite({ ...postWrite, selectedFile: base64 })
             }
           />
         </div>
